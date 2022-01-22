@@ -1,0 +1,23 @@
+{
+  "name": "medical-record-api",
+  "version": "1.0.0",
+  "description": "Aplicación que brinda informacion del historial clinico de pacientes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Gonan98",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.1.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
