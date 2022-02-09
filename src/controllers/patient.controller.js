@@ -7,9 +7,14 @@ const savePatient = async (req, res) => {
         lastName,
         dni,
         birthdate,
-        location,
+        department,
+        city,
+        district,
+        address,
         gender
     } = req.body;
+
+    //console.log(req.body);
 
     try {
         await Patient.create({
@@ -18,7 +23,12 @@ const savePatient = async (req, res) => {
             lastName,
             dni,
             birthdate,
-            location,
+            location: {
+                department,
+                city,
+                district,
+                address
+            },
             gender
         });
         res.status(201).json({
@@ -53,8 +63,8 @@ const getPatientById = async (req, res) => {
 const getPatientByDni = async (req, res) => {
     try {
         const patient = await Patient.findOne({ dni: req.params.dni });
-		if (!patient) return res.status(404).json({ message: 'Patient not found' });
-		
+        if (!patient) return res.status(404).json({ message: 'Patient not found' });
+
         res.status(200).json(patient);
     } catch (error) {
         res.status(500).json(error);
