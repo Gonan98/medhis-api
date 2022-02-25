@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 const express = require('express');
-const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 
+const app = express();
 const patientRoutes = require('./routes/patient.routes');
 const detailRoutes = require('./routes/detail.routes');
 

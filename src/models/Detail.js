@@ -17,7 +17,7 @@ const detailSchema = new Schema({
         ref: 'Patient'
     }
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = model('Detail', detailSchema);

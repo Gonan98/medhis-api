@@ -18,7 +18,7 @@ const patientSchema = new Schema({
         required: true
     }
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = model('Patient', patientSchema);

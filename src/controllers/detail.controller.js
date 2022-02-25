@@ -35,16 +35,6 @@ const saveDetail = async (req, res) => {
     }
 }
 
-/* const getAllDetails = async (req, res) => {
-    try {
-        const details = await Detail.find({ patient: req.params.id });
-
-        res.status(200).json(details);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-} */
-
 const getDetailsByPatient = async (req, res) => {
     try {
         const details = await Detail.find({ patient: req.params.patientId });
@@ -54,15 +44,6 @@ const getDetailsByPatient = async (req, res) => {
         res.status(500).json(error);
     }
 }
-
-
-/* const getLastDetail = async (req, res) => {
-    try {
-
-    } catch (error) {
-        res.status(500).json(error);
-    }
-} */
 
 module.exports = {
     saveDetail,
