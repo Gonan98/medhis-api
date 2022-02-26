@@ -2,10 +2,10 @@ const Patient = require('../models/Patient');
 
 const savePatient = async (req, res) => {
     const {
-        medicalRecord,
+        recordNumber,
         firstName,
         lastName,
-        dni,
+        documentNumber,
         birthdate,
         department,
         city,
@@ -14,14 +14,12 @@ const savePatient = async (req, res) => {
         gender
     } = req.body;
 
-    //console.log(req.body);
-
     try {
-        await Patient.create({
-            medicalRecord,
+        const newPatient = new Patient({
+            recordNumber,
             firstName,
             lastName,
-            dni,
+            documentNumber,
             birthdate,
             location: {
                 department,
@@ -31,6 +29,9 @@ const savePatient = async (req, res) => {
             },
             gender
         });
+
+        await newPatient.save();
+
         res.status(201).json({
             message: 'Patient registered successfuly'
         });
@@ -42,7 +43,7 @@ const savePatient = async (req, res) => {
 const getAllPatients = async (req, res) => {
 
     try {
-        const patients = await Patient.find();
+        const patients = await Patient.find({});
         res.status(200).json(patients);
     } catch (error) {
         res.status(500).json(error);
@@ -60,9 +61,9 @@ const getPatientById = async (req, res) => {
     }
 }
 
-const getPatientByDni = async (req, res) => {
+const getPatientByDocumentNumber = async (req, res) => {
     try {
-        const patient = await Patient.findOne({ dni: req.params.dni });
+        const patient = await Patient.findOne({ documentNumber: req.params.dni });
         if (!patient) return res.status(404).json({ message: 'Patient not found' });
 
         res.status(200).json(patient);
@@ -74,6 +75,6 @@ const getPatientByDni = async (req, res) => {
 module.exports = {
     savePatient,
     getAllPatients,
-    getPatientByDni,
+    getPatientByDocumentNumber,
     getPatientById
 }
