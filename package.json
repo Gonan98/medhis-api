@@ -2,7 +2,7 @@
   "name": "medical-record-api",
   "version": "1.0.0",
   "description": "Aplicación que brinda informacion del historial clinico de pacientes",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"

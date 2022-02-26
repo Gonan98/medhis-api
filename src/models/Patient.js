@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const patientSchema = new Schema({
-    medicalRecord: { type: String, required: true, unique: true },
+    recordNumber: { type: String, required: true, unique: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    dni: { type: String, required: true, unique: true },
+    documentNumber: { type: String, required: true, unique: true },
     birthdate: { type: Date, required: true },
     location: {
         department: { type: String, required: true },
@@ -16,9 +16,10 @@ const patientSchema = new Schema({
         type: String,
         enum: ['M', 'F'],
         required: true
-    }
+    },
+    histories: [{ type: Schema.Types.ObjectId, ref: 'History' }]
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = model('Patient', patientSchema);
