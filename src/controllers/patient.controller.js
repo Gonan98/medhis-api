@@ -8,7 +8,7 @@ const savePatient = async (req, res) => {
         documentNumber,
         birthdate,
         department,
-        city,
+        province,
         district,
         address,
         gender
@@ -23,7 +23,7 @@ const savePatient = async (req, res) => {
             birthdate,
             location: {
                 department,
-                city,
+                province,
                 district,
                 address
             },
