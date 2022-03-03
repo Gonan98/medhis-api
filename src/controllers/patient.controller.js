@@ -2,28 +2,27 @@ const Patient = require('../models/Patient');
 
 const savePatient = async (req, res) => {
     const {
-        recordNumber,
         firstName,
         lastName,
         documentNumber,
         birthdate,
         department,
-        city,
+        province,
         district,
         address,
         gender
     } = req.body;
 
     try {
+
         const newPatient = new Patient({
-            recordNumber,
             firstName,
             lastName,
             documentNumber,
             birthdate,
             location: {
                 department,
-                city,
+                province,
                 district,
                 address
             },
