@@ -4,6 +4,6 @@ const { saveHistory, getHistoriesByPatient } = require("../controllers/history.c
 const router = Router();
 
 router.post('/', saveHistory);
-router.get('/patient/:patientId', getHistoriesByPatient);
+router.get('/', getHistoriesByPatient);
 
 module.exports = router;

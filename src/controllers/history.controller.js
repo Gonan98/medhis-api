@@ -39,8 +39,13 @@ const saveHistory = async (req, res) => {
 }
 
 const getHistoriesByPatient = async (req, res) => {
+
+    const qPatientId = req.query.patient;
+
+    if (!qPatientId) return res.status(400).json({ message: 'Query parameter <patient> is missing' });
+
     try {
-        const histories = await History.find({ patient: req.params.patientId });
+        const histories = await History.find({ patient: qPatientId });
 
         res.status(200).json(histories);
     } catch (error) {

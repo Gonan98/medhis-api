@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const patientSchema = new Schema({
-    recordNumber: { type: String, required: true, unique: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     documentNumber: { type: String, required: true, unique: true },
