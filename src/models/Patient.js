@@ -16,7 +16,8 @@ const patientSchema = new Schema({
         enum: ['M', 'F'],
         required: true
     },
-    histories: [{ type: Schema.Types.ObjectId, ref: 'History' }]
+    histories: [{ type: Schema.Types.ObjectId, ref: 'History' }],
+    antecedents: [{ type: Schema.Types.ObjectId, ref: 'Antecedent' }]
 }, {
     timestamps: false
 });
