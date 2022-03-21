@@ -9,7 +9,7 @@ const historySchema = new Schema({
     weight: { type: Number, required: true },
     pressure: { type: Number, required: true },
     temperature: { type: Number, required: true },
-    anamnesis: String,
+    anamnesis: { type: String, required: true },
     patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true }
 }, {
     timestamps: false

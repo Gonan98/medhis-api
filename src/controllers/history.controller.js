@@ -8,9 +8,14 @@ const saveHistory = async (req, res) => {
         pressure,
         temperature,
         anamnesis,
-        age,
         patient
     } = req.body;
+
+    if (!height || !weight || !pressure || !temperature || !anamnesis || !patient) {
+        return res.status(400).json({
+            message: 'Missing data'
+        });
+    }
 
     try {
         const newHistory = new History({
@@ -19,7 +24,6 @@ const saveHistory = async (req, res) => {
             pressure,
             temperature,
             anamnesis,
-            age,
             patient
         });
 

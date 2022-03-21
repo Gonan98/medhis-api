@@ -8,7 +8,8 @@ const antecedentSchema = new Schema({
     },
     detail: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     patient: {
         type: Schema.Types.ObjectId,

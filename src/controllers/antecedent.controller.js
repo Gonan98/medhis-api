@@ -4,6 +4,12 @@ const Patient = require("../models/Patient");
 const saveAntecedent = async (req, res) => {
     const { type, detail, patient } = req.body;
 
+    if (!type || !detail || !patient) {
+        return res.status(400).json({
+            message: 'Missing data'
+        });
+    }
+
     try {
         const newAntecedent = new Antecedent({
             type,
