@@ -7,6 +7,8 @@ const historySchema = new Schema({
     temperature: { type: Number, required: true },
     anamnesis: { type: String, required: true },
     patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true }
+}, {
+    timestamps: true
 });
 
 module.exports = model('History', historySchema);

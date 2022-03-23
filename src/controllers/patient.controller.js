@@ -21,9 +21,9 @@ const savePatient = async (req, res) => {
             documentNumber,
             birthdate,
             location: {
-                department,
-                province,
-                district,
+                department: department.toUpperCase(),
+                province: province.toUpperCase(),
+                district: district.toUpperCase(),
                 address
             },
             gender
