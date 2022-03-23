@@ -8,9 +8,14 @@ const saveHistory = async (req, res) => {
         pressure,
         temperature,
         anamnesis,
-        age,
         patient
     } = req.body;
+
+    if (!height || !weight || !pressure || !temperature || !anamnesis || !patient) {
+        return res.status(400).json({
+            message: 'Missing data'
+        });
+    }
 
     try {
         const newHistory = new History({
@@ -19,7 +24,6 @@ const saveHistory = async (req, res) => {
             pressure,
             temperature,
             anamnesis,
-            age,
             patient
         });
 
@@ -45,7 +49,7 @@ const getHistoriesByPatient = async (req, res) => {
     if (!qPatientId) return res.status(400).json({ message: 'Query parameter <patient> is missing' });
 
     try {
-        const histories = await History.find({ patient: qPatientId });
+        const histories = await History.find({ patient: qPatientId }).sort({ createdAt: -1 });
 
         res.status(200).json(histories);
     } catch (error) {

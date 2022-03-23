@@ -3,12 +3,14 @@ const { Schema, model } = require("mongoose");
 const antecedentSchema = new Schema({
     type: {
         type: String,
-        enum: ['EM','AF','IM'],
+        enum: ['EXAMENES','FAMILIARES','MEDICAMENTOS'],
         required: true
     },
+    examinationDate: Date,
     detail: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     patient: {
         type: Schema.Types.ObjectId,
